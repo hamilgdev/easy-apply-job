@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: easy-apply-job-nextjs-dev-image
+    container_name: host-easy-apply-job-dev-frontend
+    build:
+      context: ./frontend
+      dockerfile: ../provision/frontend/development/Dockerfile
+    ports:
+      - ${NEXT_PUBLIC_APP_PORT}:3000
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+    networks:
+      - main
+    volumes:
+      - ./frontend:/home/app
+
+  backend:
+    image: easy-apply-job-nestjs-dev-image
+    container_name: host-easy-apply-job-nestjs-dev-backend
+    build:
+      context: ./backend
+      dockerfile: ../provision/backend/development/Dockerfile
+    ports:
+      - ${NEST_PORT}:${NEST_PORT}
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+    networks:
+      - main
+    volumes:
+      - ./backend:/var/www/stack
+
+  database:
+    image: postgres:15.3
+    container_name: host-easy-apply-job-database
+    restart: always
+    env_file:
+      - .env
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - main
+
+networks:
+  main:
+    driver: bridge

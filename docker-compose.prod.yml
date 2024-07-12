@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: easy-apply-job-nextjs-prod-image
+    container_name: host-easy-apply-job-prod-frontend
+    build:
+      context: ./frontend
+      dockerfile: ../provision/frontend/production/Dockerfile
+    ports:
+      - ${NEXT_PUBLIC_APP_PORT}:3000
+    depends_on:
+      - backend
+    restart: always
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+
+  backend:
+    image: easy-apply-job-nestjs-prod-image
+    container_name: host-easy-apply-job-nestjs-prod-backend
+    build:
+      context: ./backend
+      dockerfile: ../provision/backend/production/Dockerfile
+    ports:
+      - ${NEST_PORT}:${NEST_PORT}
+    restart: always
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
