@@ -15,7 +15,7 @@ FROM node:${NODE_VERSION}-alpine AS runtime-image
 ENV APP_HOME /home/app
 WORKDIR $APP_HOME
 
-RUN npm install -g npm@10.8.1
+RUN npm install -g npm@10.8.2
 COPY --from=compile-image /usr/src/node_modules $APP_HOME/node_modules
 COPY . $APP_HOME
 

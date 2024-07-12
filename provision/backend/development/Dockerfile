@@ -11,7 +11,7 @@ WORKDIR $APP_HOME
 # Copy the directory and its content
 COPY . .
 COPY package.json tsconfig.json tsconfig.build.json ./
-RUN npm install -g npm@10.8.1
+RUN npm install -g npm@10.8.2
 RUN npm install
 
 # Allows to execute the application
