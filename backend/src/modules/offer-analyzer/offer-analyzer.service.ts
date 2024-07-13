@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { QueryExtractUrlDto } from '@/src/modules/offer-analyzer/dto';
+import { QueryExtractUrlDto } from '@/src/modules/offer-analyzer/dtos';
 import { OpenGraphAnalizerService } from '@/src/modules/offer-analyzer/services/open-graph-analizer/open-graph-analizer.service';
 
 @Injectable()
@@ -13,10 +13,8 @@ export class OfferAnalyzerService {
       const scrapedMetadata =
         await this.openGraphAnalizerService.scraper(queryExtractUrlDto);
 
-      return scrapedMetadata;
+      return { job_offer: scrapedMetadata };
     } catch (error) {
-      console.log(error);
-
       throw new NotFoundException('Failed to scrape metadata');
     }
   }

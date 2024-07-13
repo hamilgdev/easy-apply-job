@@ -1,6 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { OfferAnalyzerService } from './offer-analyzer.service';
-import { QueryExtractUrlDto } from '@/src/modules/offer-analyzer/dto';
+import { QueryExtractUrlDto } from '@/src/modules/offer-analyzer/dtos';
 
 @Controller('offer-analyzer')
 export class OfferAnalyzerController {

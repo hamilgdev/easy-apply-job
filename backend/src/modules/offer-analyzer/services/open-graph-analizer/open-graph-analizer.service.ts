@@ -1,4 +1,5 @@
-import ogs from 'open-graph-scraper';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const ogs = require('open-graph-scraper');
 import { JSDOM } from 'jsdom';
 import DOMPurify from 'dompurify';
 
@@ -6,7 +7,7 @@ import { Injectable } from '@nestjs/common';
 import {
   QueryExtractUrlDto,
   ScrapedMetadataDto,
-} from '@/src/modules/offer-analyzer/dto';
+} from '@/src/modules/offer-analyzer/dtos';
 
 const window = new JSDOM('').window;
 const purify = DOMPurify(window);
