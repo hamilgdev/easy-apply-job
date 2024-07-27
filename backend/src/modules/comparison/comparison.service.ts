@@ -25,6 +25,19 @@ export class ComparisonService {
       const parsedResponse = JSON.parse(analyzedJobOffer);
       return {
         is_job_offer_adequate: parsedResponse.is_job_offer_adequate,
+        user_profile: {
+          profile: parsedResponse.user_profile.profile,
+          description: parsedResponse.user_profile.description,
+          skills: parsedResponse.user_profile.skills,
+        },
+        job_offer: {
+          title: parsedResponse.job_offer.title,
+          summary: parsedResponse.job_offer.summary,
+          description: parsedResponse.job_offer.description,
+          key_responsibilities: parsedResponse.job_offer.key_responsibilities,
+          company_name: parsedResponse.job_offer.company_name,
+          job_type: parsedResponse.job_offer.job_type,
+        },
         tips: {
           profile:
             parsedResponse.tips.profile ||

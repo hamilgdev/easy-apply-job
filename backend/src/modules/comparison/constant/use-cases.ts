@@ -18,10 +18,24 @@ export const USE_CASES: PromptObject = {
         - Tips para mejorar las habilidades del usuario.
         - Tips para mejorar la experiencia del usuario.
         - Tips para mejorar la educación del usuario.
+      - Siempre responde en español.
 
       Ejemplo de respuesta:
       {
         "is_job_offer_adequate": true,
+        "user_profile": {
+          "profile": "Desarrollador de software",
+          "description": 'Resumen de mi perfil profesional. Alemnos unos 250 caracteres',
+          "skills": ['JavaScript', 'React', 'Node.js'],
+        },
+        "job_offer": {
+          "title": "Desarrollador de software",
+          "summary": "Resumen de la oferta de trabajo",
+          "description": "Descripción de la oferta de trabajo"
+          "key_responsibilities": ["Responsabilidad 1", "Responsabilidad 2"], 
+          company_name: "Nombre de la empresa",
+          job_type: "Tipo de trabajo",
+        },
         "tips": {
           "profile": "Debes de mejorar tu perfil profesional",
           "description": "Debes de mejorar la descripción de tu perfil",
@@ -36,7 +50,7 @@ export const USE_CASES: PromptObject = {
       ${JSON.stringify(jobOffer)}
     `,
     settings: {
-      maxTokens: 500,
+      maxTokens: 800,
       temperature: 0.5,
       maxRetries: 1,
     },
