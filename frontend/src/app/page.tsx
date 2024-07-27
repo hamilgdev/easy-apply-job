@@ -1,11 +1,16 @@
-import { FindJobSection, TimelineStepper, UploadCVSection } from '@/components';
+import {
+  ComparativeSection,
+  FindJobSection,
+  TimelineStepper,
+  UploadCVSection,
+} from '@/components';
 
 export default function Home() {
   return (
     <>
       <header className='py-2 bg-background border-b flex items-center justify-between'>
         <div className='l-container'>
-          <h1 className='text-1xl font-semibold text-gray-500'>
+          <h1 className='text-1xl font-semibold text-gray-500 text-center'>
             🧳 Easy Apply Job
           </h1>
         </div>
@@ -17,8 +22,9 @@ export default function Home() {
         </aside>
 
         <div className='flex-1 p-8 bg-white rounded-lg shadow-lg'>
-          {/* <UploadCVSection /> */}
-          <FindJobSection />
+          <UploadCVSection />
+          {/* <FindJobSection /> */}
+          {/* <ComparativeSection /> */}
         </div>
       </main>
     </>

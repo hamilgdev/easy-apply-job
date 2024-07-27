@@ -1,2 +1,3 @@
-export * from './upload-cv-section/upload-cv-section'
-export * from './find-job-section/find-job-section'
+export * from './upload-cv/upload-cv-section'
+export * from './find-job/find-job-section'
+export * from './comparative/comparative-section'
