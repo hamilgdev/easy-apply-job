@@ -11,8 +11,9 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: 'Sysadmin App',
-  description: 'Manage your servers and users with ease',
+  title: '🧳 Easy Apply Job',
+  description:
+    'Artificial intelligence-powered platform designed to help candidates prepare for and apply to job openings more effectively.',
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
     <html lang='en'>
       <body
         className={cn(
-          'min-h-screen bg-background font-sans antialiased',
+          'min-h-screen bg-gray-50 font-sans antialiased',
           fontSans.variable
         )}
       >
