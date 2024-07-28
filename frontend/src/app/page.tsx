@@ -21,10 +21,10 @@ export default function Home() {
     setStepHitory([...stepHitory, nextStep]);
   };
 
-  const handleStepBack = () => {
-    const backStep = activeStep - 1;
+  const handleStepBack = (backTo?: number) => {
+    const backStep = backTo ?? activeStep - 1;
     setActiveStep(backStep);
-    setStepHitory(stepHitory.filter((step) => step !== activeStep));
+    setStepHitory(stepHitory.filter((step) => step <= backStep));
   };
 
   return (

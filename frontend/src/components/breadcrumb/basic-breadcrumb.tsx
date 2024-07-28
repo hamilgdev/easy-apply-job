@@ -20,10 +20,10 @@ export const BasicBreadcrumb = ({
 }: {
   activeStep: number;
   stepHitory: number[];
-  onHandleStepBack: () => void;
+  onHandleStepBack: (backTo?: number) => void;
 }) => {
   const handleStepBack = (index: number) => {
-    if (index < activeStep) onHandleStepBack();
+    if (index < activeStep) onHandleStepBack(index);
   };
 
   return (
