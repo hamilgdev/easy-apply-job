@@ -3,6 +3,7 @@
 import { useState } from 'react';
 
 import {
+  BasicBreadcrumb,
   ComparativeSection,
   FindJobSection,
   StepperPanel,
@@ -41,16 +42,23 @@ export default function Home() {
           <TimelineStepper stepHitory={stepHitory} />
         </aside>
 
-        <div className='flex-1 p-8 bg-white rounded-lg shadow-lg'>
-          <StepperPanel activeStep={activeStep} index={0}>
-            <UploadCVSection onHandleStepNext={handleStepNext} />
-          </StepperPanel>
-          <StepperPanel activeStep={activeStep} index={1}>
-            <FindJobSection />
-          </StepperPanel>
-          <StepperPanel activeStep={activeStep} index={2}>
-            <ComparativeSection />
-          </StepperPanel>
+        <div className='flex gap-4 flex-col flex-1'>
+          <BasicBreadcrumb
+            activeStep={activeStep}
+            onHandleStepBack={handleStepBack}
+            stepHitory={stepHitory}
+          />
+          <div className='p-8 bg-white rounded-lg shadow-lg'>
+            <StepperPanel activeStep={activeStep} index={0}>
+              <UploadCVSection onHandleStepNext={handleStepNext} />
+            </StepperPanel>
+            <StepperPanel activeStep={activeStep} index={1}>
+              <FindJobSection onHandleStepNext={handleStepNext} />
+            </StepperPanel>
+            <StepperPanel activeStep={activeStep} index={2}>
+              <ComparativeSection />
+            </StepperPanel>
+          </div>
         </div>
       </main>
     </>

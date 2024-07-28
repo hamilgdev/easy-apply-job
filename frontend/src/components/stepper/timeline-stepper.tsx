@@ -36,10 +36,8 @@ const TimelineItem = ({
     <li className='mb-10 ms-6 max-w-48'>
       <span
         className={clsx(
-          'absolute flex items-center justify-center w-8 h-8 rounded-full -start-4 ring-4 ring-white dark:ring-gray-900 dark:bg-green-900',
-          stepHitory.includes(index)
-            ? 'bg-green-200'
-            : 'bg-gray-100 dark:bg-gray-700'
+          'absolute flex items-center justify-center w-8 h-8 rounded-full -start-4 ring-4 ring-white',
+          stepHitory.includes(index) ? 'bg-green-200' : 'bg-gray-100'
         )}
       >
         {icon()}

@@ -1,6 +1,10 @@
 import { SearchJobAnalizerForm } from '@/components';
 
-export const FindJobSection = () => {
+export const FindJobSection = ({
+  onHandleStepNext,
+}: {
+  onHandleStepNext: () => void;
+}) => {
   return (
     <section>
       <div className='flex justify-center items-center flex-col mb-2'>
@@ -13,7 +17,7 @@ export const FindJobSection = () => {
         </p>
       </div>
       <div className='flex justify-center items-center flex-col'>
-        <SearchJobAnalizerForm />
+        <SearchJobAnalizerForm onHandleStepNext={onHandleStepNext} />
       </div>
     </section>
   );
