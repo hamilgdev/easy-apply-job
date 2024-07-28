@@ -1,6 +1,10 @@
-import { DropzoneForm, TimelineStepper } from '@/components';
+import { DropzoneForm } from '@/components';
 
-export const UploadCVSection = () => {
+export const UploadCVSection = ({
+  onHandleStepNext,
+}: {
+  onHandleStepNext: () => void;
+}) => {
   return (
     <section>
       <h2 className='text-lg font-semibold text-gray-800'>
@@ -10,7 +14,7 @@ export const UploadCVSection = () => {
         Sube tu CV y aplica a la oferta de trabajo que deseas en tan solo 3
         pasos
       </p>
-      <DropzoneForm />
+      <DropzoneForm onHandleStepNext={onHandleStepNext} />
     </section>
   );
 };

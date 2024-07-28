@@ -1,11 +1,31 @@
+'use client';
+
+import { useState } from 'react';
+
 import {
   ComparativeSection,
   FindJobSection,
+  StepperPanel,
   TimelineStepper,
   UploadCVSection,
 } from '@/components';
 
 export default function Home() {
+  const [activeStep, setActiveStep] = useState<number>(0);
+  const [stepHitory, setStepHitory] = useState<number[]>([0]);
+
+  const handleStepNext = () => {
+    const nextStep = activeStep + 1;
+    setActiveStep(nextStep);
+    setStepHitory([...stepHitory, nextStep]);
+  };
+
+  const handleStepBack = () => {
+    const backStep = activeStep - 1;
+    setActiveStep(backStep);
+    setStepHitory(stepHitory.filter((step) => step !== activeStep));
+  };
+
   return (
     <>
       <header className='py-2 bg-background border-b flex items-center justify-between'>
@@ -18,13 +38,19 @@ export default function Home() {
 
       <main className='relative l-container flex flex-row  min-h-screen py-12 gap-8'>
         <aside className='sticky h-fit top-12'>
-          <TimelineStepper />
+          <TimelineStepper stepHitory={stepHitory} />
         </aside>
 
         <div className='flex-1 p-8 bg-white rounded-lg shadow-lg'>
-          <UploadCVSection />
-          {/* <FindJobSection /> */}
-          {/* <ComparativeSection /> */}
+          <StepperPanel activeStep={activeStep} index={0}>
+            <UploadCVSection onHandleStepNext={handleStepNext} />
+          </StepperPanel>
+          <StepperPanel activeStep={activeStep} index={1}>
+            <FindJobSection />
+          </StepperPanel>
+          <StepperPanel activeStep={activeStep} index={2}>
+            <ComparativeSection />
+          </StepperPanel>
         </div>
       </main>
     </>

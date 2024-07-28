@@ -1,6 +1,17 @@
-import { FileUploadIcon } from '@/components';
+'use client';
 
-export const DropzoneForm = () => {
+import { FileUploadIcon } from '@/components';
+import { useUploadFile } from '@/hooks/use-files';
+
+export const DropzoneForm = ({
+  onHandleStepNext,
+}: {
+  onHandleStepNext: () => void;
+}) => {
+  const { handleUploadFile, isLoading } = useUploadFile({
+    onHandleStepNext,
+  });
+
   return (
     <div className='flex items-center justify-center w-full'>
       <label
@@ -22,6 +33,8 @@ export const DropzoneForm = () => {
           type='file'
           accept='application/pdf'
           className='hidden'
+          onChange={handleUploadFile}
+          disabled={isLoading}
         />
       </label>
     </div>
