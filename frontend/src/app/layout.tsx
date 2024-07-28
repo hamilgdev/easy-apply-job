@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang='en'>
+    <html lang='es'>
       <body
         className={cn(
           'min-h-screen bg-gray-50 font-sans antialiased',

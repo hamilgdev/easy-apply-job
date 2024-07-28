@@ -69,6 +69,6 @@
   }
 
   .l-container {
-    @apply w-full max-w-[var(--max-width)] px-4 lg:mx-auto xl:px-0;
+    @apply w-full max-w-[var(--max-width)] px-8 lg:mx-auto xl:px-0;
   }
 }
