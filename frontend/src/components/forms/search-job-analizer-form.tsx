@@ -1,8 +1,7 @@
 'use client';
 
-import { Input, Button } from '@/components';
+import { Input, Button, ReloadIcon } from '@/components';
 import { useOfferAnalyzer } from '@/hooks/use-offer-analyzer';
-import { userInformationStore } from '@/store';
 import { useState } from 'react';
 
 const URL_PATTERN = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/i;
@@ -20,7 +19,7 @@ export const SearchJobAnalizerForm = ({
 }: {
   onHandleStepNext: () => void;
 }) => {
-  const { handleGetOfferAnalyzer } = useOfferAnalyzer({
+  const { handleGetOfferAnalyzer, isLoading } = useOfferAnalyzer({
     onHandleStepNext,
   });
 
@@ -57,7 +56,12 @@ export const SearchJobAnalizerForm = ({
           onChange={handleChange}
           placeholder='https://www.tecnoempleo.com/fullstack-developer'
         />
-        <Button type='submit' disabled={!url || !URL_PATTERN.test(url)}>
+        <Button
+          className='flex gap-1'
+          type='submit'
+          disabled={!url || !URL_PATTERN.test(url) || isLoading}
+        >
+          {isLoading && <ReloadIcon className='animate-spin' size='sm' />}
           Analizar
         </Button>
       </div>
