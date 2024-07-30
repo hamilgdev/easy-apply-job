@@ -24,7 +24,8 @@ export const USE_CASES: PromptObject = {
       {
         "is_job_offer_adequate": true,
         "user_profile": {
-          "profile": "Desarrollador de software",
+          "username": "Nombre de usuario",
+          "role": "Desarrollador de software",
           "description": 'Resumen de mi perfil profesional. Alemnos unos 250 caracteres',
           "skills": ['JavaScript', 'React', 'Node.js'],
         },
@@ -32,9 +33,10 @@ export const USE_CASES: PromptObject = {
           "title": "Desarrollador de software",
           "summary": "Resumen de la oferta de trabajo",
           "description": "Descripción de la oferta de trabajo"
-          "key_responsibilities": ["Responsabilidad 1", "Responsabilidad 2"], 
-          company_name: "Nombre de la empresa",
-          job_type: "Tipo de trabajo",
+          "key_responsibilities": "Devuelve una lista de responsabilidades en un array [] sino hay responsabilidades devolver vacío []", 
+          "company_name": "Devuelve el nombre de la empresa sino hay nombre devolver vacío ''",
+          "job_type": "Tipo de trabajo",
+          "salary": "Incluir salario si es posible sino dejar vacío ''"
         },
         "tips": {
           "profile": "Debes de mejorar tu perfil profesional",

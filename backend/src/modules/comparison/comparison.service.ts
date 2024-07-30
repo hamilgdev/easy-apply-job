@@ -11,7 +11,7 @@ export class ComparisonService {
       const analyzedJobOffer =
         await this.aiAnalyzerService.openAIChat(jobOffer);
       const formattedResponse = this.formatResponse(analyzedJobOffer);
-      return { job_offer: formattedResponse };
+      return { job_comparison: formattedResponse };
     } catch (error) {
       console.error(error);
       throw new BadRequestException(
@@ -26,7 +26,8 @@ export class ComparisonService {
       return {
         is_job_offer_adequate: parsedResponse.is_job_offer_adequate,
         user_profile: {
-          profile: parsedResponse.user_profile.profile,
+          username: parsedResponse.user_profile.username,
+          role: parsedResponse.user_profile.role,
           description: parsedResponse.user_profile.description,
           skills: parsedResponse.user_profile.skills,
         },
@@ -37,6 +38,7 @@ export class ComparisonService {
           key_responsibilities: parsedResponse.job_offer.key_responsibilities,
           company_name: parsedResponse.job_offer.company_name,
           job_type: parsedResponse.job_offer.job_type,
+          salary: parsedResponse.job_offer.salary,
         },
         tips: {
           profile:
