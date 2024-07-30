@@ -13,10 +13,9 @@ export function useUploadFile({
   const [isLoading, setIsLoading] = useState(false);
   const { setUserInformation } = userInformationStore();
 
-  const handleUploadFile = useCallback(async (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files) {
+  const handleUploadFile = useCallback(async (file: File) => {
+    if (file) {
       setIsLoading(true);
-      const file = e.target.files[0];
       try {
         if (file) {
           const response = await postUploadFile(file);
