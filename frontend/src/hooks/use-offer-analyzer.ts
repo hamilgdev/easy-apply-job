@@ -4,12 +4,17 @@ import { getOfferAnalyzer } from "@/services/offer-analyzer";
 import { offerAnalyzerStore } from "@/store";
 import { HttpStatusCode } from "axios";
 import { useCallback, useState } from "react";
+import { useComparison } from "./use-comparison";
 
 export function useOfferAnalyzer({
-  onHandleStepNext
+  onHandleStepNext,
+  onHandleStepBack,
 }: {
   onHandleStepNext: () => void;
+  onHandleStepBack: () => void;
 }) {
+  const { handlePostComparison } = useComparison({ onHandleStepBack });
+
   const { setJobOffer } = offerAnalyzerStore()
   const [isLoading, setIsLoading] = useState(false);
 
@@ -24,16 +29,17 @@ export function useOfferAnalyzer({
         setJobOffer(job_offer);
         NotificationManager({
           type: 'success',
-          message: 'Se ha analizado la oferta correctamente',
+          message: '¡Todo bien! Revisando la oferta de trabajo.',
         });
         onHandleStepNext();
+        handlePostComparison();
       }
     } catch (error) {
-      errorHandler(error);
+      errorHandler('¡Uy! Algo falló. ¿Puedes intentar de nuevo?');
     } finally {
       setIsLoading(false);
     }
-  }, [setJobOffer, onHandleStepNext]);
+  }, [setJobOffer, onHandleStepNext, handlePostComparison]);
 
   return { isLoading, handleGetOfferAnalyzer };
 }

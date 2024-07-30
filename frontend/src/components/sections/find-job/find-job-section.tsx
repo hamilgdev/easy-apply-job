@@ -2,8 +2,10 @@ import { SearchJobAnalizerForm } from '@/components';
 
 export const FindJobSection = ({
   onHandleStepNext,
+  onHandleStepBack,
 }: {
   onHandleStepNext: () => void;
+  onHandleStepBack: () => void;
 }) => {
   return (
     <section>
@@ -17,7 +19,10 @@ export const FindJobSection = ({
         </p>
       </div>
       <div className='flex justify-center items-center flex-col'>
-        <SearchJobAnalizerForm onHandleStepNext={onHandleStepNext} />
+        <SearchJobAnalizerForm
+          onHandleStepBack={onHandleStepBack}
+          onHandleStepNext={onHandleStepNext}
+        />
       </div>
     </section>
   );

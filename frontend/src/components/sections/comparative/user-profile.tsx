@@ -1,6 +1,11 @@
 import { Avatar, AvatarFallback, AvatarImage, Separator } from '@/components';
+import { UserProfile as IUserProfile } from '@/interfaces';
 
-export const UserProfile = () => {
+interface UserProfileProps {
+  userProfile?: IUserProfile;
+}
+
+export const UserProfile = ({ userProfile }: UserProfileProps) => {
   return (
     <div className='bg-card p-6 rounded-lg shadow-lg'>
       <div className='flex items-center gap-4'>
@@ -10,19 +15,17 @@ export const UserProfile = () => {
             className='size-20 
           object-contain pointer-events-none object-center'
           />
-          <AvatarFallback>JD</AvatarFallback>
+          <AvatarFallback>
+            {userProfile?.username[0].toUpperCase()}
+          </AvatarFallback>
         </Avatar>
         <div>
-          <h2 className='text-xl font-bold'>John Doe</h2>
-          <p className='text-muted-foreground'>Software Engineer</p>
+          <h2 className='text-xl font-bold'>{userProfile?.username}</h2>
+          <p className='text-muted-foreground'>{userProfile?.role}</p>
         </div>
       </div>
       <Separator className='my-4' />
-      <p className='text-muted-foreground'>
-        Experienced software engineer with a passion for building innovative
-        solutions. Skilled in full-stack development, problem-solving, and
-        delivering high-quality projects.
-      </p>
+      <p className='text-muted-foreground'>{userProfile?.description}</p>
     </div>
   );
 };

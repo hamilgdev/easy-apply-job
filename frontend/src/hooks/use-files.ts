@@ -24,7 +24,7 @@ export function useUploadFile({
             setUserInformation(user_information);
             NotificationManager({
               type: 'success',
-              message: 'Has subido tu archivo correctamente',
+              message: '¡Archivo subido con éxito!',
             });
             onHandleStepNext();
           }

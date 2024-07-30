@@ -1,37 +1,38 @@
 import { Separator } from '@/components';
+import { JobOfferComparison } from '@/interfaces';
 
-export const JobOffer = () => {
+interface JobOfferProps {
+  jobOffer?: JobOfferComparison;
+}
+
+export const JobOffer = ({ jobOffer }: JobOfferProps) => {
   return (
     <div className='bg-card p-6 rounded-lg shadow-lg col-span-2'>
-      <h2 className='text-2xl font-bold mb-4'>Job Offer Details</h2>
+      <h2 className='text-2xl font-bold mb-4'>Detalles de la oferta laboral</h2>
       <div className='grid grid-cols-2 gap-4'>
         <div>
-          <h3 className='text-lg font-medium'>Company</h3>
-          <p>Acme Inc.</p>
+          <h3 className='text-lg font-medium'>Compañía</h3>
+          <p>{jobOffer?.company_name}</p>
         </div>
         <div>
-          <h3 className='text-lg font-medium'>Job Title</h3>
-          <p>Full-Stack Developer</p>
+          <h3 className='text-lg font-medium'>Puesto disponible</h3>
+          <p>{jobOffer?.title}</p>
         </div>
         <div>
-          <h3 className='text-lg font-medium'>Salary Range</h3>
-          <p>$80,000 - $100,000</p>
+          <h3 className='text-lg font-medium'>Salario</h3>
+          <p>{jobOffer?.salary || '-'}</p>
         </div>
         <div>
-          <h3 className='text-lg font-medium'>Location</h3>
-          <p>San Francisco, CA</p>
+          <h3 className='text-lg font-medium'>Tipo de trabajo</h3>
+          <p>{jobOffer?.job_type}</p>
         </div>
       </div>
       <Separator className='my-4' />
-      <h3 className='text-lg font-medium'>Key Responsibilities</h3>
+      <h3 className='text-lg font-medium'>Responsabilidades claves</h3>
       <ul className='list-disc pl-6 text-muted-foreground'>
-        <li>Develop and maintain web applications using modern frameworks</li>
-        <li>
-          Collaborate with cross-functional teams to deliver high-quality
-          software
-        </li>
-        <li>Participate in code reviews and contribute to the codebase</li>
-        <li>Identify and implement performance improvements</li>
+        {jobOffer?.key_responsibilities?.map((responsibility, index) => (
+          <li key={index}>{responsibility}</li>
+        ))}
       </ul>
     </div>
   );

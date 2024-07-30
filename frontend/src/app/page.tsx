@@ -53,7 +53,10 @@ export default function Home() {
               <UploadCVSection onHandleStepNext={handleStepNext} />
             </StepperPanel>
             <StepperPanel activeStep={activeStep} index={1}>
-              <FindJobSection onHandleStepNext={handleStepNext} />
+              <FindJobSection
+                onHandleStepBack={handleStepBack}
+                onHandleStepNext={handleStepNext}
+              />
             </StepperPanel>
             <StepperPanel activeStep={activeStep} index={2}>
               <ComparativeSection />

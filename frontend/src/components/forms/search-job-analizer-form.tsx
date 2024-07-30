@@ -16,11 +16,14 @@ const ValidationErrorMsg = ({ msg }: { msg: string }) => {
 
 export const SearchJobAnalizerForm = ({
   onHandleStepNext,
+  onHandleStepBack,
 }: {
   onHandleStepNext: () => void;
+  onHandleStepBack: () => void;
 }) => {
   const { handleGetOfferAnalyzer, isLoading } = useOfferAnalyzer({
     onHandleStepNext,
+    onHandleStepBack,
   });
 
   const [url, setUrl] = useState<string>('');

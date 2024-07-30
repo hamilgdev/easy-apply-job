@@ -1,4 +1,4 @@
-import { JobOffer } from "@/interfaces";
+import { ComparisonJobOffer, JobOffer } from "@/interfaces";
 import { create } from "zustand";
 
 interface UserInformationStore {
@@ -26,4 +26,19 @@ export const offerAnalyzerStore = create<OfferAnalyzerStore>((set) => ({
     provider_url: '',
   },
   setJobOffer: (jobOffer: JobOffer) => set({ jobOffer }),
+}));
+
+
+interface JobComparisonStore {
+  jobComparison: ComparisonJobOffer | null;
+  onAirJobComparison: boolean;
+  setOnAirJobComparison: (onAirJobComparison: boolean) => void;
+  setJobComparison: (jobComparison: any) => void;
+}
+
+export const jobComparisonStore = create<JobComparisonStore>((set) => ({
+  jobComparison: null,
+  onAirJobComparison: true,
+  setOnAirJobComparison: (onAirJobComparison: boolean) => set({ onAirJobComparison }),
+  setJobComparison: (jobComparison: ComparisonJobOffer) => set({ jobComparison }),
 }));
