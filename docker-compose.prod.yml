@@ -3,7 +3,7 @@ version: '3.8'
 services:
   frontend:
     image: easy-apply-job-nextjs-prod-image
-    container_name: host-easy-apply-job-prod-frontend
+    container_name: host-easy-apply-job-nextjs-prod-frontend
     build:
       context: ./frontend
       dockerfile: ../provision/frontend/production/Dockerfile

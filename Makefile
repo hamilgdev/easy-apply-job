@@ -43,7 +43,7 @@ frontend.build_dev:
 
 frontend.start_dev:
 	docker compose -f docker-compose.dev.yml run \
-	--rm --name host-easy-apply-job-dev-frontend \
+	--rm --name host-easy-apply-job-nextjs-dev-frontend \
 	--no-deps --service-ports frontend \
 	; docker compose -f docker-compose.dev.yml down frontend
 
@@ -57,7 +57,7 @@ frontend.build_prod:
 
 frontend.start_prod:
 	docker compose -f docker-compose.prod.yml run \
-	--rm --name host-easy-apply-job-prod-frontend \
+	--rm --name host-easy-apply-job-nextjs-prod-frontend \
 	--no-deps --service-ports frontend \
 	; docker compose -f docker-compose.prod.yml down frontend
 
