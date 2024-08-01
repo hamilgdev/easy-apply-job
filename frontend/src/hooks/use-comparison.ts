@@ -1,9 +1,8 @@
 import { errorHandler } from "@/handlers";
-import { ComparisonJobOffer } from "@/interfaces";
 import { postComparison } from "@/services/comparison-service";
 import { jobComparisonStore, offerAnalyzerStore, userInformationStore } from "@/store";
 import { HttpStatusCode } from "axios";
-import { useState, useCallback, useEffect } from 'react';
+import { useCallback, useEffect } from 'react';
 
 export function useComparison({
   onHandleStepBack
@@ -31,6 +30,13 @@ export function useComparison({
       setOnAirJobComparison(false);
     }
   }, [jobOffer, userInformation, onHandleStepBack, setJobComparison, setOnAirJobComparison]);
+
+  useEffect(() => {
+    return () => {
+      setOnAirJobComparison(true);
+      setJobComparison(null);
+    };
+  }, [setOnAirJobComparison, setJobComparison]);
 
   return {
     handlePostComparison,

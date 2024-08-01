@@ -1,7 +1,9 @@
 'use client';
 
-import { AITips } from './ai-tips';
+import { Tips } from './tips';
+import { ImprovementList } from './improvement-list';
 import { JobOffer } from './job-offer';
+import { RecommendationList } from './recommendation-list';
 import { UserProfile } from './user-profile';
 import { CircleLoader } from '@/components';
 import { jobComparisonStore } from '@/store';
@@ -26,9 +28,10 @@ export const ComparativeSection = () => {
         <UserProfile userProfile={jobComparison?.user_profile} />
         <JobOffer jobOffer={jobComparison?.job_offer} />
       </div>
-
-      <div className=''>
-        <AITips
+      <div className='flex gap-4 flex-col'>
+        <RecommendationList recommendations={jobComparison?.recommendations} />
+        <ImprovementList improvements={jobComparison?.improvements} />
+        <Tips
           tips={jobComparison?.tips}
           isJobOfferAdequate={jobComparison?.is_job_offer_adequate}
         />

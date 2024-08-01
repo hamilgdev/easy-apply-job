@@ -24,11 +24,11 @@ export const JobOffer = ({ jobOffer }: JobOfferProps) => {
         </div>
         <div>
           <h3 className='text-lg font-medium'>Tipo de trabajo</h3>
-          <p>{jobOffer?.job_type}</p>
+          <p>{jobOffer?.job_type || '-'}</p>
         </div>
       </div>
       <Separator className='my-4' />
-      <h3 className='text-lg font-medium'>Responsabilidades claves</h3>
+      <h3 className='text-lg font-medium mb-2'>Responsabilidades claves</h3>
       <ul className='list-disc pl-6 text-muted-foreground'>
         {jobOffer?.key_responsibilities?.map((responsibility, index) => (
           <li key={index}>{responsibility}</li>

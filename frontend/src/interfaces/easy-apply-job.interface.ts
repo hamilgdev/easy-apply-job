@@ -10,10 +10,13 @@ export interface ComparisonResponse {
   job_comparison: ComparisonJobOffer;
 }
 
+
 export interface ComparisonJobOffer {
   is_job_offer_adequate: boolean;
   user_profile: UserProfile;
-  job_offer: JobOfferComparison;
+  job_offer: JobOffer;
+  recommendations: AdviceItem[] | [];
+  improvements: AdviceItem[] | [];
   tips: Tips;
 }
 
@@ -28,11 +31,16 @@ export interface JobOfferComparison {
 }
 
 export interface Tips {
-  profile: string;
+  profile: AdviceItem[] | [];
+  description: AdviceItem[] | [];
+  skills: AdviceItem[] | [];
+  experience: AdviceItem[] | [];
+  education: AdviceItem[] | [];
+}
+
+export interface AdviceItem {
+  title: string;
   description: string;
-  skills: string;
-  experience: string;
-  education: string;
 }
 
 export interface UserProfile {
@@ -46,6 +54,8 @@ export interface JobOffer {
   title: string;
   summary: string;
   description: string;
-  image_url: string;
-  provider_url: string;
+  key_responsibilities: string[];
+  company_name: string;
+  job_type: string;
+  salary: string;
 }
