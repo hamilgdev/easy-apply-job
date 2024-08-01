@@ -24,7 +24,7 @@ export const ComparativeSection = () => {
 
   return (
     <section>
-      <div className='grid grid-cols-1 md:grid-cols-3 gap-8 mb-4'>
+      <div className='flex gap-4 flex-col mb-8'>
         <UserProfile userProfile={jobComparison?.user_profile} />
         <JobOffer jobOffer={jobComparison?.job_offer} />
       </div>

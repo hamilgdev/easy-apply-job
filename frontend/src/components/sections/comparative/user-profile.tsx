@@ -7,7 +7,7 @@ interface UserProfileProps {
 
 export const UserProfile = ({ userProfile }: UserProfileProps) => {
   return (
-    <div className='bg-card p-6 rounded-lg shadow-lg'>
+    <div className='bg-card'>
       <div className='flex items-center gap-4'>
         <Avatar className='h-16 w-16'>
           <AvatarImage

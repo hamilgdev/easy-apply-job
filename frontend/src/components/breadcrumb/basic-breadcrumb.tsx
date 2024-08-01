@@ -31,9 +31,9 @@ export const BasicBreadcrumb = ({
       className='flex w-fit px-5 py-3 border border-gray-200 rounded-lg bg-gray-50'
       aria-label='Breadcrumb'
     >
-      <ol className='inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse'>
+      <ol className='inline-flex items-center space-x-2 md:space-x-2 rtl:space-x-reverse'>
         {DATA_BREADCRUMB.map((item, index) => (
-          <li key={index}>
+          <li key={index} className='flex items-center'>
             <div
               onClick={() => handleStepBack(index)}
               className={clsx(
@@ -41,7 +41,11 @@ export const BasicBreadcrumb = ({
                 stepHitory.includes(index) ? 'text-gray-700' : 'text-gray-400'
               )}
             >
-              {index > 0 && <ArrowIcon size='sm' />}
+              {index > 0 && (
+                <div className='mx-2'>
+                  <ArrowIcon size='sm' />
+                </div>
+              )}
               <span
                 className={clsx(
                   'rtl:ms-1 ltr:ms-1 text-sm font-medium  md:ms-2',

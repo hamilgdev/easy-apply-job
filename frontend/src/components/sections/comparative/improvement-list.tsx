@@ -15,7 +15,7 @@ export const ImprovementList = ({
   const isImprovementEmpty = improvements.length === 0;
 
   return (
-    <div className='bg-card p-6 rounded-lg shadow-lg col-span-1 md:col-span-3'>
+    <div className='bg-card p-6 rounded-lg shadow-md'>
       <h2 className='flex gap-2 justify-center items-center text-2xl font-bold mb-5 text-gray-500'>
         <SpeakerphoneIcon />
         Mejora tus habilidades

@@ -10,7 +10,7 @@ export const RecommendationList = ({
   const isRecommendationEmpty = recommendations.length === 0;
 
   return (
-    <div className='bg-card p-6 rounded-lg shadow-lg col-span-1 md:col-span-3'>
+    <div className='bg-card p-6 rounded-lg shadow-md'>
       <h2 className='flex gap-2 justify-center items-center text-2xl font-bold mb-5 text-gray-500'>
         <ReportIcon />
         Recomendaciones para tu perfil
@@ -21,7 +21,7 @@ export const RecommendationList = ({
         {isRecommendationEmpty && (
           <ComparativeListEmpty
             title='🎉 ¡YuJu! No tenemos recomendaciones para darte'
-            description='¡Tu perfil esta genial! Sigue así.'
+            description='¡La descripción de tu perfil esta genial! Sigue así.'
             icon={<CircleCheckIcon size='md' />}
           />
         )}
