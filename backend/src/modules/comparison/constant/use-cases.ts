@@ -8,7 +8,6 @@ export const USE_CASES: PromptObject = {
       description: string;
     }) => `
       Compara la siguiente oferta de trabajo con el perfil del usuario y genera un informe,
-      Debes de responder en formato JSON.
 
       Tu tarea es dar respuesta a la siguiente pregunta:
       - ¿La oferta de trabajo es adecuada para el usuario?
@@ -19,31 +18,35 @@ export const USE_CASES: PromptObject = {
         - Tips para mejorar la experiencia del usuario.
         - Tips para mejorar la educación del usuario.
       - Siempre responde en español.
+      - Siempre responde en formato JSON.
+      - No debes dar recomendaciones genéricas, debes de analizar la oferta de trabajo y el perfil del usuario para dar recomendaciones personalizadas.
 
       Ejemplo de respuesta:
       {
-        "is_job_offer_adequate": true,
+        "is_job_offer_adequate": true o false, de acuerdo a si la oferta de trabajo es adecuada segun el perfil del usuario,
         "user_profile": {
-          "username": "Nombre de usuario",
-          "role": "Desarrollador de software",
+          "username": "Nombre del usuario",
+          "role": "Rol del usuario. Segun como lo especifique en su perfil",
           "description": 'Resumen de mi perfil profesional. Alemnos unos 250 caracteres',
-          "skills": ['JavaScript', 'React', 'Node.js'],
+          "skills": "Una lista de habilidades del usuario en un array []. Ejemplo: ['JavaScript', 'React', 'Node.js']"
         },
         "job_offer": {
-          "title": "Desarrollador de software",
+          "title": "El título del puesto de la oferta de trabajo que se está comparando. Si no hay título devolver vacío ''",
           "summary": "Resumen de la oferta de trabajo",
           "description": "Descripción de la oferta de trabajo"
-          "key_responsibilities": "Devuelve una lista de responsabilidades en un array [] sino hay responsabilidades devolver vacío []", 
-          "company_name": "Devuelve el nombre de la empresa sino hay nombre devolver vacío ''",
-          "job_type": "Tipo de trabajo",
-          "salary": "Incluir salario si es posible sino dejar vacío ''"
+          "key_responsibilities": "Devuelve en una lista las responsabilidades que se mencionan en la oferta agrupadas en un array ['responsabilidad 1', 'responsabilidad 2']. Sino hay responsabilidades devolver vacío []", 
+          "company_name": "Devuelve el nombre de la empresa que postulo la oferta laboral sino hay nombre devolver vacío ''",
+          "job_type": "Tipo de trabajo que se ofrece. Devolver vacío '' si no se especifica",
+          "salary": "Incluir salario que se mendiona en la oferta si es posible sino dejar vacío ''"
         },
+        "recommendations": Una lista de recomendaciones para mejorar el perfil del usuario. Debe de devolver un array [] con objetos { title, description } sino hay recomendaciones devolver vacío [],
+        "improvements": "Una lista de mejoras sobre lo que falta en el perfil del usuario para aplicar a la oferta. Debe devolver un array [] con objetos { title, description } sino hay recomendaciones devolver vacío []",
         "tips": {
-          "profile": "Debes de mejorar tu perfil profesional",
-          "description": "Debes de mejorar la descripción de tu perfil",
-          "skills": "Debes de mejorar tus habilidades",
-          "experience": "Debes de mejorar tu experiencia",
-          "education": "Debes de mejorar tu educación"
+          "profile": "Una lista de recomendaciones para mejorar el perfil del usuario. Debe devolver un array [] con objetos { title, description } sino hay recomendaciones devolver vacío []",
+          "description": "Una lista de recomendaciones para mejorar la descripción del perfil del usuario. Debe devolver un array [] con objetos { title, description } sino hay recomendaciones devolver vacío []",
+          "skills": "Una lista de recomendaciones para mejorar las habilidades del usuario. Debe devolver un array [] con objetos { title, description } sino hay recomendaciones devolver vacío []",
+          "experience": "Una lista de recomendaciones para mejorar la experiencia del usuario. Debe devolver un array [] con objetos { title, description } sino hay recomendaciones devolver vacío []",
+          "education": "Una lista de recomendaciones para mejorar la educación del usuario. Debe devolver un array [] con objetos { title, description } sino hay recomendaciones devolver vacío []"
         }
       }
       
@@ -52,9 +55,9 @@ export const USE_CASES: PromptObject = {
       ${JSON.stringify(jobOffer)}
     `,
     settings: {
-      maxTokens: 800,
-      temperature: 0.5,
-      maxRetries: 1,
+      maxTokens: 2048,
+      temperature: 0.7,
+      maxRetries: 2,
     },
   },
 };

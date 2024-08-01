@@ -40,19 +40,14 @@ export class ComparisonService {
           job_type: parsedResponse.job_offer.job_type,
           salary: parsedResponse.job_offer.salary,
         },
+        recommendations: parsedResponse.recommendations,
+        improvements: parsedResponse.improvements,
         tips: {
-          profile:
-            parsedResponse.tips.profile ||
-            'Debes de mejorar tu perfil profesional',
-          description:
-            parsedResponse.tips.description ||
-            'Debes de mejorar la descripción de tu perfil',
-          skills:
-            parsedResponse.tips.skills || 'Debes de mejorar tus habilidades',
-          experience:
-            parsedResponse.tips.experience || 'Debes de mejorar tu experiencia',
-          education:
-            parsedResponse.tips.education || 'Debes de mejorar tu educación',
+          profile: parsedResponse.tips.profile,
+          description: parsedResponse.tips.description,
+          skills: parsedResponse.tips.skills,
+          experience: parsedResponse.tips.experience,
+          education: parsedResponse.tips.education,
         },
       };
     } catch (error) {
