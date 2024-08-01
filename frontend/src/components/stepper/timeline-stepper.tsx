@@ -1,23 +1,5 @@
-import { BriefcaseIcon, UserScanIcon, SparklesIcon } from '@/components';
+import { NAVIGATION_STEPS } from '@/constants/navigation-steps';
 import { clsx } from 'clsx';
-
-const DATA_TIMELINE = [
-  {
-    title: 'Sube tu CV',
-    description: 'Dejanos saber de tus habilidades y experiencias',
-    icon: () => <UserScanIcon />,
-  },
-  {
-    title: 'Encuentra tu oferta',
-    description: 'Oferta a la que quieres aplicar',
-    icon: () => <BriefcaseIcon />,
-  },
-  {
-    title: 'Tips',
-    description: 'Recibe tips para mejorar tu perfil y aplicar a la oferta',
-    icon: () => <SparklesIcon />,
-  },
-];
 
 const TimelineItem = ({
   title,
@@ -51,7 +33,7 @@ const TimelineItem = ({
 export const TimelineStepper = ({ stepHitory }: { stepHitory: number[] }) => {
   return (
     <ol className='relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400'>
-      {DATA_TIMELINE.map((item, index) => (
+      {NAVIGATION_STEPS.map((item, index) => (
         <TimelineItem
           key={index}
           index={index}
