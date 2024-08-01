@@ -15,7 +15,7 @@ const TimelineItem = ({
   stepHitory: number[];
 }) => {
   return (
-    <li className='mb-10 ms-6 max-w-48'>
+    <li className='relative pl-8 pb-10 border-l last:border-none -left-1 border-gray-200 max-w-48'>
       <span
         className={clsx(
           'absolute flex items-center justify-center w-8 h-8 rounded-full -start-4 ring-4 ring-white',
@@ -32,7 +32,7 @@ const TimelineItem = ({
 
 export const TimelineStepper = ({ stepHitory }: { stepHitory: number[] }) => {
   return (
-    <ol className='relative text-gray-500 border-s border-gray-200 dark:border-gray-700 dark:text-gray-400'>
+    <ol className='relative text-gray-500'>
       {NAVIGATION_STEPS.map((item, index) => (
         <TimelineItem
           key={index}
