@@ -85,12 +85,6 @@ backend.start_dev:
 backend.stop_dev:
 	docker compose -f docker-compose.dev.yml down backend
 
-# backend.test:
-# 	cd backend && npm run test
-
-# backend.test.watch:
-# 	cd backend && npm run test:watch
-
 # 🚀 Production
 
 backend.build_prod:
@@ -106,23 +100,3 @@ backend.stop_prod:
 	docker compose -f docker-compose.prod.yml down backend
 
 backend.multi_platform.build_prod:
-
-# -------------------------🗄️ DATABASE-------------------------
-
-database.start_dev:
-	docker compose -f docker-compose.dev.yml run \
-	--rm --name host-easy-apply-job-database \
-	--no-deps --service-ports database \
-	; docker compose -f docker-compose.dev.yml down database
-
-database.stop_dev:
-	docker compose stop database
-
-prisma.generate:
-	cd backend && npm run prisma:generate
-
-prisma.migrate:
-	cd backend && npm run prisma:migrate
-
-prisma.seed:
-	cd backend && npm run prisma:seed

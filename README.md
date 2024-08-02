@@ -31,27 +31,6 @@ You can use the `.env.template` file to create your `.env` file. This file is us
 - `provision/`: The files to provision the Docker containers
 - `Makefile`: The file to run the commands to initialize, execute and more the application
 
-## 🛠️ Setting implementation
-
-1. Create a new repository using this template
-2. (optional) Rename the `image`, `container_name` and `networks` in the `docker-compose.yml` file according to your project
-   - Make sure that the new name matches with the **Makefile** instructions in the root `/` of the project
-3. (optional) Rename the `name` in the `package.json` of the **frontend** and **backend** file according to your project
-4. Determine the **environment variables** in the `.env` file. According to the `.env.template` initial file defined in the root `/` of the project
-5. Using the **Makefile** of the root `/` of the project, run the following command to initialize installing the dependencies of **frontend** and **backend** the application:
-
-   - ```bash
-     make app.init_dev
-     ```
-
-6. Initialize the `@prisma/client` with the following command:
-
-   - ```bash
-     make prisma.generate
-     ```
-
-Build the containers. Go to the next section [🐳 Running the app inside containers](#-running-the-app-inside-containers)
-
 ## 🐳 Running the app inside containers
 
 To run the application with containers you will need:
@@ -85,12 +64,6 @@ Or you can run the **backend** container with one command
   make backend.start_dev
 ```
 
-Also you can run the **database** container with one command
-
-```bash
-  make database.start_dev
-```
-
 ## 🚀 Running the implementation
 
 When the application is running, usging the default configuration
@@ -102,7 +75,3 @@ you can access the **frontend** in the following url:
 you can access the **backend** in the following url:
 
 - [http://localhost:3000](http://localhost:3000)
-
-and, you can access the swagger documentation of the **backend** in the following url:
-
-- [http://localhost:3000/api](http://localhost:3000/api)
