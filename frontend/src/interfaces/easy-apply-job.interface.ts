@@ -64,6 +64,6 @@ export interface JobOfferAnalyzer {
   title: string;
   summary: string;
   description: string;
-  image_url: string;
-  provider_url: string;
+  image_url?: string;
+  provider_url?: string;
 }

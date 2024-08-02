@@ -3,7 +3,7 @@ import { JobOfferAnalyzer } from "@/interfaces";
 import { postComparison } from "@/services/comparison-service";
 import { jobComparisonStore, userInformationStore } from "@/store";
 import { HttpStatusCode } from "axios";
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { NotificationManager } from "@/lib/notifications";
 
 export function useComparison({
@@ -14,9 +14,12 @@ export function useComparison({
   const { userInformation } = userInformationStore();
   const { jobComparison, setJobComparison, setOnAirJobComparison } = jobComparisonStore();
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handlePostComparison = useCallback(async (jobOffer: JobOfferAnalyzer) => {
     if (!jobOffer || !userInformation) return;
     try {
+      setIsLoading(true);
       const params = { job_offer: jobOffer, user_information: userInformation };
       const response = await postComparison({ params });
       if (response.status === HttpStatusCode.Created) {
@@ -32,6 +35,7 @@ export function useComparison({
       errorHandler('¡Vaya! Parece que no pudimos comparar la oferta de trabajo con tu perfil. ¿Puedes intentar de nuevo?');
     } finally {
       setOnAirJobComparison(false);
+      setIsLoading(false);
     }
   }, [userInformation, onHandleStepBack, setJobComparison, setOnAirJobComparison]);
 
@@ -45,6 +49,7 @@ export function useComparison({
   }, [jobComparison, setJobComparison, setOnAirJobComparison]);
 
   return {
+    isLoading,
     handlePostComparison,
   };
 }

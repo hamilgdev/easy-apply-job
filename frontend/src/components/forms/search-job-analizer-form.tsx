@@ -1,31 +1,18 @@
 'use client';
 
 import { Input, Button, ReloadIcon } from '@/components';
-import { useOfferAnalyzer } from '@/hooks/use-offer-analyzer';
 import { useState } from 'react';
+import { ErrorAlertMsg } from './inputs/error-alert-msg';
 
 const URL_PATTERN = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- ;,./?%&=]*)?$/i;
 
-const ValidationErrorMsg = ({ msg }: { msg: string }) => {
-  return (
-    <div className='text-red-500 text-sm'>
-      <p>{msg}</p>
-    </div>
-  );
-};
-
 export const SearchJobAnalizerForm = ({
-  onHandleStepNext,
-  onHandleStepBack,
+  onSubmit,
+  isLoading,
 }: {
-  onHandleStepNext: () => void;
-  onHandleStepBack: () => void;
+  isLoading: boolean;
+  onSubmit: ({ url }: { url: string }) => void;
 }) => {
-  const { handleGetOfferAnalyzer, isLoading } = useOfferAnalyzer({
-    onHandleStepNext,
-    onHandleStepBack,
-  });
-
   const [url, setUrl] = useState<string>('');
   const [error, setError] = useState<string>('');
 
@@ -42,7 +29,7 @@ export const SearchJobAnalizerForm = ({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleGetOfferAnalyzer({ url });
+    onSubmit({ url });
     setError('');
   };
 
@@ -68,7 +55,7 @@ export const SearchJobAnalizerForm = ({
           Analizar
         </Button>
       </div>
-      {error && <ValidationErrorMsg msg={error} />}
+      {error && <ErrorAlertMsg msg={error} />}
     </form>
   );
 };
