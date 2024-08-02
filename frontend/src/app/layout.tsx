@@ -11,7 +11,7 @@ const fontSans = FontSans({
 });
 
 export const metadata: Metadata = {
-  title: '🧳 Easy Apply Job',
+  title: 'Easy Apply Job',
   description:
     'Artificial intelligence-powered platform designed to help candidates prepare for and apply to job openings more effectively.',
 };
