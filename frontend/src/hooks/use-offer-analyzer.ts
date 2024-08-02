@@ -1,5 +1,4 @@
 import { errorHandler } from "@/handlers";
-import { NotificationManager } from "@/lib/notifications";
 import { getOfferAnalyzer } from "@/services/offer-analyzer";
 import { HttpStatusCode } from "axios";
 import { useCallback, useState } from 'react';
@@ -23,15 +22,11 @@ export function useOfferAnalyzer({
       const response = await getOfferAnalyzer({ params });
       if (response.status === HttpStatusCode.Ok) {
         const { job_offer } = response.data;
-        await handlePostComparison(job_offer)
         onHandleStepNext();
-        NotificationManager({
-          type: 'success',
-          message: '¡Todo bien! Revisando la oferta de trabajo.',
-        });
+        await handlePostComparison(job_offer)
       }
     } catch (error) {
-      errorHandler('¡Uy! Algo falló. ¿Puedes intentar de nuevo?');
+      errorHandler('¡Uy! Algo falló. Parece que no pudimos analizar la oferta. ¿Puedes intentar de nuevo?');
     } finally {
       setIsLoading(false);
     }
