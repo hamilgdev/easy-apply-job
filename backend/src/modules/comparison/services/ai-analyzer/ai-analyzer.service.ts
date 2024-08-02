@@ -14,7 +14,7 @@ export class AiAnalyzerService {
     const { comparisonJob } = USE_CASES;
 
     const result = await streamText({
-      model: openai('gpt-3.5-turbo-1106'),
+      model: openai('gpt-4-turbo'),
       system: comparisonJob.prompt(job_offer),
       messages: [
         {
