@@ -1,8 +1,9 @@
 import { errorHandler } from "@/handlers";
+import { JobOfferAnalyzer } from "@/interfaces";
 import { postComparison } from "@/services/comparison-service";
-import { jobComparisonStore, offerAnalyzerStore, userInformationStore } from "@/store";
+import { jobComparisonStore, userInformationStore } from "@/store";
 import { HttpStatusCode } from "axios";
-import { useCallback, useEffect } from 'react';
+import { useCallback } from 'react';
 
 export function useComparison({
   onHandleStepBack
@@ -10,12 +11,10 @@ export function useComparison({
   onHandleStepBack: () => void;
 }) {
   const { userInformation } = userInformationStore();
-  const { jobOffer } = offerAnalyzerStore();
   const { setJobComparison, setOnAirJobComparison } = jobComparisonStore();
 
-  const handlePostComparison = useCallback(async () => {
+  const handlePostComparison = useCallback(async (jobOffer: JobOfferAnalyzer) => {
     if (!jobOffer || !userInformation) return;
-
     try {
       const params = { job_offer: jobOffer, user_information: userInformation };
       const response = await postComparison({ params });
@@ -29,14 +28,7 @@ export function useComparison({
     } finally {
       setOnAirJobComparison(false);
     }
-  }, [jobOffer, userInformation, onHandleStepBack, setJobComparison, setOnAirJobComparison]);
-
-  useEffect(() => {
-    return () => {
-      setOnAirJobComparison(true);
-      setJobComparison(null);
-    };
-  }, [setOnAirJobComparison, setJobComparison]);
+  }, [userInformation, onHandleStepBack, setJobComparison, setOnAirJobComparison]);
 
   return {
     handlePostComparison,

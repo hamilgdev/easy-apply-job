@@ -9,6 +9,8 @@ export const StepperPanel = ({
   children,
   index,
 }: StepperPanelProps) => {
+  if (activeStep !== index) return null;
+
   return (
     <div
       role='steppanel'

@@ -1,9 +1,9 @@
-import { ComparisonResponse, JobOffer } from "@/interfaces";
+import { ComparisonResponse, JobOfferAnalyzer, } from "@/interfaces";
 import easyApplyJobApi from "@/services/api/easy-apply-job-api";
 import { AxiosResponse } from "axios";
 
 interface PostComparisonParams {
-  job_offer: JobOffer;
+  job_offer: JobOfferAnalyzer;
   user_information: string;
 }
 

@@ -53,7 +53,7 @@ export const Tips = ({ isJobOfferAdequate, tips }: ITipsProps) => {
         {hasNoTips && (
           <ComparativeListEmpty
             title='🎉 ¡YuJu! No tenemos tips para darte'
-            description='¡Tu CV esta rock and roll! Sigue así.'
+            description='¡Tu CV esta Rock and Roll! Sigue así.'
             icon={<CircleCheckIcon size='md' />}
           />
         )}

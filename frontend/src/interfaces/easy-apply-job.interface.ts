@@ -3,7 +3,7 @@ export interface FileUploadResponse {
 }
 
 export interface OfferAnalyzerResponse {
-  job_offer: JobOffer;
+  job_offer: JobOfferAnalyzer;
 }
 
 export interface ComparisonResponse {
@@ -14,7 +14,7 @@ export interface ComparisonResponse {
 export interface ComparisonJobOffer {
   is_job_offer_adequate: boolean;
   user_profile: UserProfile;
-  job_offer: JobOffer;
+  job_offer: JobOfferComparison;
   recommendations: AdviceItem[] | [];
   improvements: AdviceItem[] | [];
   tips: Tips;
@@ -50,7 +50,7 @@ export interface UserProfile {
   skills: string[];
 }
 
-export interface JobOffer {
+export interface JobOfferComparison {
   title: string;
   summary: string;
   description: string;
@@ -58,4 +58,12 @@ export interface JobOffer {
   company_name: string;
   job_type: string;
   salary: string;
+}
+
+export interface JobOfferAnalyzer {
+  title: string;
+  summary: string;
+  description: string;
+  image_url: string;
+  provider_url: string;
 }
