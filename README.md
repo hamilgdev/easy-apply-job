@@ -1,5 +1,7 @@
 # Easy Apply Job 🧳
 
+![Cover application](/assets/og.png)
+
 Easy Apply Job is an artificial intelligence-powered platform designed to help candidates prepare for and apply to job openings more effectively.
 
 Users can provide the URL of a job offer, and the platform will extract and analyze the job offer data using web scraping techniques. It will then compare this information with the user's profile, including their CV and skills, generating a detailed report that will guide the user in creating a customized CV tailored to the specific job offer.
