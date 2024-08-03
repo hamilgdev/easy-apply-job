@@ -74,4 +74,4 @@ you can access the **frontend** in the following url:
 
 you can access the **backend** in the following url:
 
-- [http://localhost:3000](http://localhost:3000)
+- [http://localhost:3000/api](http://localhost:3000/api)
