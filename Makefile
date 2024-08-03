@@ -65,6 +65,10 @@ frontend.stop_prod:
 	docker compose -f docker-compose.prod.yml down frontend
 
 frontend.multi_platform.build_prod:
+	docker buildx build --platform linux/amd64,linux/arm64 \
+	-t hamilgdev/easy-apply-job-nextjs-prod-frontend:latest \
+	-f ./provision/frontend/production/Dockerfile ./frontend \
+	--push
 
 # -------------------------🗂️ BACKEND-------------------------
 
@@ -100,3 +104,7 @@ backend.stop_prod:
 	docker compose -f docker-compose.prod.yml down backend
 
 backend.multi_platform.build_prod:
+	docker buildx build --platform linux/amd64,linux/arm64 \
+	-t hamilgdev/easy-apply-job-nestjs-prod-backend:latest \
+	-f ./provision/backend/production/Dockerfile ./backend \
+	--push
