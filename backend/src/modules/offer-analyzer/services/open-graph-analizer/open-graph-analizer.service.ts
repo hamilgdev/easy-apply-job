@@ -9,7 +9,7 @@ import {
   ScrapedMetadataDto,
 } from '@/src/modules/offer-analyzer/dtos';
 
-const window = new JSDOM('').window;
+const { window } = new JSDOM('');
 const purify = DOMPurify(window);
 
 @Injectable()

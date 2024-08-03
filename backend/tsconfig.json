@@ -10,6 +10,7 @@
     "target": "ES2021",
     "sourceMap": true,
     "outDir": "./dist",
+    "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["./*"]
