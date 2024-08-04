@@ -16,7 +16,7 @@ Users can provide the URL of a job offer, and the platform will extract and anal
 
 ### Visual Studio Code
 
-Extensions aditionals
+Additional extensions
 
 - [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint): It helps you see the alerts from the linter in real-time in your editor.
 
@@ -38,7 +38,7 @@ To run the application with containers you will need:
 - Docker. [👉 Install Docker](https://docs.docker.com/get-docker/)
 - Docker Compose. [👉 Install Docker Compose](https://docs.docker.com/compose/install/)
 
-then run the following command int the root `/` to initialize the application:
+then run the following command in the root `/` to initialize the application:
 
 Build the containers
 
@@ -66,7 +66,7 @@ Or you can run the **backend** container with one command
 
 ## 🚀 Running the implementation
 
-When the application is running, usging the default configuration
+When the application is running, it uses the default setting
 
 you can access the **frontend** in the following url:
 
