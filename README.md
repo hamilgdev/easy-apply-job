@@ -1,4 +1,4 @@
-# Easy Apply Job 🧳
+# 🧳 Easy Apply Job
 
 ![Cover application](/assets/og.png)
 
