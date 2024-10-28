@@ -1,6 +1,6 @@
 # 🧳 Easy Apply Job
 
-![Cover application](/assets/og.png)
+![Cover application](/assets/og.jpeg)
 
 Easy Apply Job is an artificial intelligence-powered platform designed to help candidates prepare for and apply to job openings more effectively.
 
